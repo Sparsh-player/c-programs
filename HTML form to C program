@@ -30,3 +30,5 @@ $runcmd = "./a.out > output.txt";
 $process_stdin = popen($runcmd, 'w');
 fwrite($process_stdin, "text to send to process");
 pclose($process_stdin);
+
+hacktober fest
