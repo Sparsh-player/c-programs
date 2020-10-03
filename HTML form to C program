@@ -1,0 +1,32 @@
+1
+
+
+1
+I have this small program which takes input from stdin sample.c
+
+#include<stdio.h>
+main()
+{
+int l=0;    
+scanf("%d",&l);
+printf("\n%d",l);
+}
+ofcourse! compiled it: cc sample.c and got a.out and i am trying to run it via php like
+
+$runcmd = "./a.out > output.txt";
+exec($runcmd,$outp); 
+print_r($outp);
+my problem is i dont have any idea how to give input to this program so that scanf can read that? please help me here!
+
+googling gave some tips like proc_open, popen .... but i couldn't make it.
+
+Thanks in Advance.2
+
+take a look at popen http://se1.php.net/popen
+
+it works a bit like fopen, and when using fwrite, insted of writing to a file you can write to a prosses stdin insted.
+
+$runcmd = "./a.out > output.txt";
+$process_stdin = popen($runcmd, 'w');
+fwrite($process_stdin, "text to send to process");
+pclose($process_stdin);
